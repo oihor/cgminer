@@ -370,6 +370,18 @@ fi
 AM_CONDITIONAL([HAS_BITMINE_A1], [test x$bitmine_A1 = xyes])
 
 
+AC_ARG_ENABLE([cpumine],
+    [AC_HELP_STRING([--enable-cpu],[Compile support for CPU (default disabled)])],
+    [cpumine=$enableval]
+    )
+if test "x$cpumine" = xyes; then
+    #AC_DEFINE([USE_CPUMINE], [1], [Defined to 1 if CPU support is wanted])
+    AC_DEFINE([WANT_CPUMINE], [1], [Defined to 1 if CPU support is wanted])
+    drivercount=x$drivercount
+fi
+AM_CONDITIONAL([HAS_CPUMINE], [test x$cpumine = xyes])
+
+
 blockerupter="no"
 
 AC_ARG_ENABLE([blockerupter],
@@ -978,8 +990,14 @@ else
 	echo "  ModMiner.FPGAs.......: Disabled"
 fi
 
+if test "x$cpumine" = xyes; then
+    echo "  CPU..................: Enabled"
+else
+    echo "  CPU..................: Disabled"
+fi
+
 #Add any new device to this, along with a no on the end of the test
-if test "x$avalon$avalon2$avalon4$avalon7$avalon8$avalon_miner$bab$bflsc$bitforce$bitfury$bitfury16$bitmain_soc$blockerupter$hashfast$hashratio$icarus$klondike$knc$modminer$drillbit$minion$cointerra$bitmine_A1$ants1$ants2$ants3$sp10$sp30$dragonmint_t1" = xnononononononononononononononononononononononononononono; then
+if test "x$avalon$avalon2$avalon4$avalon7$avalon8$avalon_miner$bab$bflsc$bitforce$bitfury$bitfury16$bitmain_soc$blockerupter$hashfast$hashratio$icarus$klondike$knc$modminer$drillbit$minion$cointerra$bitmine_A1$ants1$ants2$ants3$sp10$sp30$dragonmint_t1$cpumine" = xnonononononononononononononononononononononononononononono; then
 	echo
 	AC_MSG_ERROR([No mining devices configured in])
 	echo

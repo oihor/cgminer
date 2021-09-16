@@ -136,6 +136,10 @@ char *curly = ":D";
 #include "driver-bitmain.h"
 #endif
 
+#ifdef WANT_CPUMINE
+#include "driver-cpu.h"
+#endif
+
 #if defined(USE_BITFORCE) || defined(USE_ICARUS) || defined(USE_AVALON) || defined(USE_AVALON2) || defined(USE_MODMINER)
 #	define USE_FPGA
 #endif
