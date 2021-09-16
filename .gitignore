@@ -64,3 +64,11 @@ lib/warn-on-use.h
 mkinstalldirs
 
 *.swp
+
+cgminer.cflags
+cgminer.config
+cgminer.creator
+cgminer.cxxflags
+cgminer.files
+cgminer.includes
+
